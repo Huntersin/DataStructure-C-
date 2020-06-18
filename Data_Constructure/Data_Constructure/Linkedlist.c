@@ -35,13 +35,50 @@ link *initNoHeadLink(int a[],int count){
         secondLink ->elem =  *(a + i);
         //secondLink ->next = NULL;
         temp ->next = secondLink;
-        temp = secondLink;
+        temp = secondLink; // temp = temp ->next 等价的
+        //free(secondLink);
         
     }
     // 通过头指针p 可以找到所有链表
+    //free(temp);
     return p;
 }
 
+// 插入某个元素
+// 1 将新节点的next指针指向插入后的节点 新的q 旧的是p  q ->next = p ->next
+// 2 将插入位置前的节点的next指针指向插入节点   q -next = q
+
+link *insertElem(link *p,int elem ,int location){
+    // 创建一个临时指针 指向p
+    link *temp = p;
+    // 插入位置的上一个节点
+    for(int i= 1; i < location;i++){
+        temp = temp ->next;
+        if(temp == NULL){
+            // 插入位置无效
+            return p;
+        }
+    }
+    
+    // 创建新的节点
+    link *newC = (link *)malloc(sizeof(link));
+    newC ->elem = elem;
+    // 1 将新节点的next指针指向插入后的节点
+    newC ->next = temp ->next;
+    // 2 将插入位置前的节点的next指针指向插入节点
+    temp ->next = newC;
+    return p;
+}
+
+link *delectElem(link *p,int elem)
+{
+    link *temp = p;
+    
+    
+    return p;
+    
+    
+}
 
 
 

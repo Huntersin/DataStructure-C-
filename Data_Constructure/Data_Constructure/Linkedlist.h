@@ -22,7 +22,20 @@ typedef struct Link{
     int elem; //数据
     struct Link *next; // 指针域,指向下一个元素
 }link;// 节点名 每个节点都是这样的结构体
-
+/**
+ 初始化一个单链表
+ */
 link *initNoHeadLink(int a[],int count);
 
+/**
+ 链表插入元素
+ */
+
+link *insertElem(link *p,int elem ,int location);
+
+/**
+ 删除元素链表
+ */
+
+link *delectElem(link *p,int elem);
 #endif /* Linkedlist_h */
