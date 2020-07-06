@@ -9,6 +9,19 @@
 #include "Linkedlist.h"
 #include <stdio.h>
 #include <stdlib.h>
+/**
+ 1 顺序表:  优点：存取速度高效，通过下标来直接存储
+
+    缺点：1.插入和删除比较慢，2.不可以增长长度
+
+               比如：插入或者删除一个元素时，整个表需要遍历移动元素来重新排一次顺序
+ 
+ 2 链表:
+  优点：插入和删除速度快，保留原有的物理顺序，比如：插入或者删除一个元素时，只需要改变指针指向即可  擅长从前往后操作,对于从后往前 无疑是灾难性 这种情况下使用双链表
+
+  缺点：查找速度慢，因为查找时，需要循环链表访问
+ 
+ */
 
 // 创建一个单链表
 
@@ -70,15 +83,32 @@ link *insertElem(link *p,int elem ,int location){
     return p;
 }
 
-link *delectElem(link *p,int elem)
+// 删除某个节点
+//  1 将节点从链表取出来
+// 2 收回控件
+link *delectElem(link *p,int elem,int location)
 {
     link *temp = p;
+   // 遍历到被删除结点的上一个结点
+    for (int  i = 0; i < location; i++) {
+        temp = temp ->next;
+        if (temp ->next == NULL) {
+            // 没有改节点位置
+            return p;
+        }
+    }
     
-    
+    link *delectLink = temp ->next;
+    // 节点移除
+    temp -> next = temp ->next->next;
+    free(delectLink);
+
     return p;
     
     
 }
+
+
 
 
 

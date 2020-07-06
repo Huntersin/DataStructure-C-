@@ -22,6 +22,13 @@ typedef struct Link{
     int elem; //数据
     struct Link *next; // 指针域,指向下一个元素
 }link;// 节点名 每个节点都是这样的结构体
+
+typedef struct Line{
+    struct Line *prior;//指向前驱节点
+    int  elem;//数据
+    struct Line *next;// 指向后续节点
+    
+}line;
 /**
  初始化一个单链表
  */
@@ -35,7 +42,9 @@ link *insertElem(link *p,int elem ,int location);
 
 /**
  删除元素链表
+ elem 删除元素
+ location 删除链表的位置
  */
 
-link *delectElem(link *p,int elem);
+link *delectElem(link *p,int elem,int location);
 #endif /* Linkedlist_h */
